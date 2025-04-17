@@ -1,7 +1,19 @@
-<script setup></script>
+<script setup>
+import ScoreBoard from '@/components/ScoreBoard.vue';
+import BattleArea from './components/BattleArea.vue';
+import PlayerChoice from './components/PlayerChoice.vue';
+import Message from './components/Message.vue';
+import BattleHistory from './components/BattleHistory.vue';
+</script>
 
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <ScoreBoard></ScoreBoard>
+    <BattleArea></BattleArea>
+    <PlayerChoice></PlayerChoice>
+    <Message></Message>
+    <BattleHistory></BattleHistory>
+  </div>
 </template>
 
 <style scoped>
