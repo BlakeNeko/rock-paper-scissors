@@ -83,7 +83,7 @@ function handlePlayerChoice(choice) {
       :computer-choice="gameState.computerChoice"
     ></BattleArea>
     <PlayerChoice @choice="handlePlayerChoice"></PlayerChoice>
-    <Message></Message>
+    <Message :result="gameState.result"></Message>
     <BattleHistory></BattleHistory>
   </div>
 </template>
