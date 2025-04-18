@@ -12,12 +12,21 @@ const scores = reactive({
   computer: 0,
   draw: 0,
 });
+
+const gameState = reactive({
+  playerChoice: null,
+  computerChoice: null,
+  result: null,
+});
 </script>
 
 <template>
   <div class="container">
     <ScoreBoard :scores="scores"></ScoreBoard>
-    <BattleArea></BattleArea>
+    <BattleArea
+      :player-choice="gameState.playerChoice"
+      :computer-choice="gameState.computerChoice"
+    ></BattleArea>
     <PlayerChoice></PlayerChoice>
     <Message></Message>
     <BattleHistory></BattleHistory>

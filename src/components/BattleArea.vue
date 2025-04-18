@@ -1,17 +1,23 @@
-<script setup></script>
+<script setup>
+defineProps(['playerChoice', 'computerChoice']);
+</script>
 
 <template>
   <div class="battle-area">
     <div class="player-side">
       <h3>你的选择</h3>
-      <div class="choice-display">?</div>
+      <div class="choice-display">
+        {{ playerChoice || '?' }}
+      </div>
     </div>
 
     <div class="vs">VS</div>
 
     <div class="computer-side">
       <h3>电脑选择</h3>
-      <div class="choice-display">?</div>
+      <div class="choice-display">
+        {{ computerChoice || '?' }}
+      </div>
     </div>
   </div>
 </template>
