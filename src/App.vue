@@ -84,7 +84,10 @@ function handlePlayerChoice(choice) {
     ></BattleArea>
     <PlayerChoice @choice="handlePlayerChoice"></PlayerChoice>
     <Message :result="gameState.result"></Message>
-    <BattleHistory></BattleHistory>
+    <BattleHistory
+      :history="gameHistory"
+      v-if="gameHistory.length > 0"
+    ></BattleHistory>
   </div>
 </template>
 

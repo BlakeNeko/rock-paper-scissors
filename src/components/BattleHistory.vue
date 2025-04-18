@@ -1,13 +1,28 @@
-<script setup></script>
+<script setup>
+defineProps(['history']);
+
+function getEachRoundResultString(result) {
+  switch (result) {
+    case 'win':
+      return '胜';
+    case 'lose':
+      return '负';
+    case 'draw':
+      return '平';
+  }
+}
+</script>
 
 <template>
   <div class="history">
     <h3>对战历史</h3>
     <div class="round-history">
-      <div class="round">
-        <div>回合1</div>
-        <div>✊ vs ✌️</div>
-        <div>胜</div>
+      <div v-for="(item, index) in history" :key="index" class="round">
+        <div>回合{{ item.round }}</div>
+        <div>{{ item.player }} vs {{ item.computer }}</div>
+        <div>
+          {{ getEachRoundResultString(item.result) }}
+        </div>
       </div>
     </div>
   </div>
