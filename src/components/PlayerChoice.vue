@@ -1,10 +1,16 @@
-<script setup></script>
+<script setup>
+const emit = defineEmits(['choice']);
+
+function handleClick(choice) {
+  emit('choice', choice);
+}
+</script>
 
 <template>
   <div class="player-choices">
-    <button class="choice-btn">✊</button>
-    <button class="choice-btn">✋</button>
-    <button class="choice-btn">✌️</button>
+    <button class="choice-btn" @click="handleClick('✊')">✊</button>
+    <button class="choice-btn" @click="handleClick('✋')">✋</button>
+    <button class="choice-btn" @click="handleClick('✌️')">✌️</button>
   </div>
 </template>
 

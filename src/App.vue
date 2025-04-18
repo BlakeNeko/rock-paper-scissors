@@ -18,6 +18,61 @@ const gameState = reactive({
   computerChoice: null,
   result: null,
 });
+
+const gameHistory = reactive([]);
+
+function makeComputerChoice() {
+  const choices = ['✊', '✋', '✌️'];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
+}
+
+function determineWinner(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    return 'draw';
+  }
+
+  if (
+    (playerChoice === '✊' && computerChoice === '✌️') ||
+    (playerChoice === '✋' && computerChoice === '✊') ||
+    (playerChoice === '✌️' && computerChoice === '✋')
+  )
+    return 'win';
+  else {
+    return 'lose';
+  }
+}
+
+function handlePlayerChoice(choice) {
+  gameState.playerChoice = choice;
+  gameState.computerChoice = makeComputerChoice();
+  gameState.result = determineWinner(
+    gameState.playerChoice,
+    gameState.computerChoice
+  );
+
+  // 更新比分
+  switch (gameState.result) {
+    case 'win':
+      scores.player++;
+      break;
+    case 'lose':
+      scores.computer++;
+      break;
+    default:
+      scores.draw++;
+      break;
+  }
+
+  // 记录历史
+  // 添加到数组最前面，这样展示的时候最左侧就一直是最新的结果
+  gameHistory.unshift({
+    round: gameHistory.length + 1,
+    player: gameState.playerChoice,
+    computer: gameState.computerChoice,
+    result: gameState.result,
+  });
+}
 </script>
 
 <template>
@@ -27,7 +82,7 @@ const gameState = reactive({
       :player-choice="gameState.playerChoice"
       :computer-choice="gameState.computerChoice"
     ></BattleArea>
-    <PlayerChoice></PlayerChoice>
+    <PlayerChoice @choice="handlePlayerChoice"></PlayerChoice>
     <Message></Message>
     <BattleHistory></BattleHistory>
   </div>
