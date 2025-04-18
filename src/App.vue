@@ -4,11 +4,19 @@ import BattleArea from './components/BattleArea.vue';
 import PlayerChoice from './components/PlayerChoice.vue';
 import Message from './components/Message.vue';
 import BattleHistory from './components/BattleHistory.vue';
+
+import { reactive } from 'vue';
+
+const scores = reactive({
+  player: 0,
+  computer: 0,
+  draw: 0,
+});
 </script>
 
 <template>
   <div class="container">
-    <ScoreBoard></ScoreBoard>
+    <ScoreBoard :scores="scores"></ScoreBoard>
     <BattleArea></BattleArea>
     <PlayerChoice></PlayerChoice>
     <Message></Message>

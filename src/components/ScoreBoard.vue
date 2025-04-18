@@ -1,18 +1,20 @@
-<script setup></script>
+<script setup>
+defineProps(['scores']);
+</script>
 
 <template>
   <div class="score-board">
     <div class="score">
       <h3>玩家</h3>
-      <p>0</p>
+      <p>{{ scores.player }}</p>
     </div>
     <div class="score">
       <h3>平局</h3>
-      <p>0</p>
+      <p>{{ scores.draw }}</p>
     </div>
     <div class="score">
       <h3>电脑</h3>
-      <p>0</p>
+      <p>{{ scores.computer }}</p>
     </div>
   </div>
 </template>
