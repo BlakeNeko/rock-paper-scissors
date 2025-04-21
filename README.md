@@ -1,29 +1,49 @@
 # rock-paper-scissors
 
-This template should help get you started developing with Vue 3 in Vite.
+使用 Vue3 制作的石头剪刀布小游戏。用于练习 Vue 的基础知识。
 
-## Recommended IDE Setup
+## 技术要点
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue3 基础知识
 
-## Customize configuration
+  - 组合式 API
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+    在 Vue3 中推荐使用组合式 API，我也更喜欢组合式 API + setup 的代码组织方式。
 
-## Project Setup
+  - 模板语法
 
-```sh
-npm install
-```
+    大部分组件中需要展示数据的地方都离不开。
 
-### Compile and Hot-Reload for Development
+  - 响应式数据
 
-```sh
-npm run dev
-```
+    让 Vue 来为我追踪数据的变化，UI 的更新。
 
-### Compile and Minify for Production
+  - 类绑定
 
-```sh
-npm run build
-```
+    根据数据的变化绑定不同的类到元素上，实现样式的变化。
+
+  - 计算属性
+
+    根据某些响应式数据，处理出新的数据，避免在模板内写大量表达式。
+
+  - 条件渲染
+
+    暂时没有某些数据的情况下，隐藏某些元素的渲染，使得界面更好看。
+
+  - 列表渲染
+
+    有多个相似结构的数据需要集中展示。
+
+  - 事件处理
+
+    响应鼠标单击，自定义事件，等等。
+
+  - 组件（单文件组件）
+
+    根据功能拆分不同的组件，使得单个功能的开发和维护难度降低。
+
+  - 组件间通信（props/emit）
+
+    在阅读官方文档时其实已经看到了更好的状态管理方式——Pinia，为了学习和实践，使用 props 向子组件传递其所需的数据，使用 emit 从子组件发出自定义事件，交由父组件进行事件处理。
+
+    最好维持单向数据流的最佳实践。数据向下传递，但是不要在子组件里直接修改数据，而是通过事件，让存储着数据的父组件进行实际更改。
